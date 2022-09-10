@@ -19,6 +19,7 @@ module.exports = {
       "square" : "60px",
       "long" : "360px",
       "full" : "100vh",
+      "hw" : "50%",
       "half" : "24%"
     },
     height: {

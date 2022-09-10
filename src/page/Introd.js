@@ -1,26 +1,25 @@
 import React from "react";
-import $ from "jquery";
-import "fullpage.js/vendors/scrolloverflow.js";
-import "fullpage.js";
-import "fullpage.js/dist/jquery.fullpage.min.css";
+import { FullPage, Slide } from "react-full-page";
+import Service from "../components/Service";
 
 const Introd = () => {
-  $(() => {
-    $("#fullpage").fullpage({
-      scrollOverflow: true,
-    });
-  });
-
   return (
-    <div id="fullpage">
-      <div className="section fp-scrollable">
-        <h3>첫번째 소개 페이지</h3>
-      </div>
-      <div className="section">
-        <h3>두번째 소개 페이지</h3>
-      </div>
-      <div className="section">마지막 권유 페이지</div>
-    </div>
+    <FullPage>
+      <Slide>
+        <div className="flex w-full flex-row">
+          <Service>
+            <h1 className="text-sm">지금까지는 없었다.</h1>
+            <h1>ONLY ONLINE 에서만</h1>
+            <h1>SAVE BOOK</h1>
+          </Service>
+          <Service>
+            <h1>test</h1>
+          </Service>
+        </div>
+        <Service>TESt</Service>
+      </Slide>
+      <Slide />
+    </FullPage>
   );
 };
 

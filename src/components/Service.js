@@ -1,14 +1,10 @@
 import React from 'react';
-import { Parallax } from 'react-parallax';
 
-const Service = (props) => {
-  const { url, title} = props;
+const Service = ({children}) => {
   return(
-    <Parallax bgImage={url} strength={950}>
-      <div>
-        <div>{title}</div>
-      </div>
-    </Parallax>
+    <div className='w-hw h-full'>
+      {children}
+    </div>
   )
 }
 

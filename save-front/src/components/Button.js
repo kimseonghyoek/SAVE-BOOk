@@ -1,7 +1,7 @@
 import React from "react";
 
 const Button = (props) => {
-  return <button disabled={props.block} className={props.styled}>{props.text}</button>;
+  return <button disabled={props.block} onClick={props.onClick} className={props.styled} type={props.type}>{props.text}</button>;
 };
 
 Button.defaultProps = {

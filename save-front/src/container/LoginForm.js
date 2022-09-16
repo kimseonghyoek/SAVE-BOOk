@@ -13,7 +13,7 @@ import {
 } from "../store/store.js";
 import { Link, useLocation } from "react-router-dom";
 import Modal from "../components/Modal";
-import Spring from 'react-spring';
+import ModalPortal from "../Portal";
 
 const LoginForm = () => {
   const getURL = useLocation();
@@ -133,16 +133,6 @@ const LoginForm = () => {
           type="true"
           onClick={checkSumbit}
         ></Button>
-        <Spring 
-        from={{ opacity: 0 }}
-        to={{opacity: 100}}>
-         <Modal
-          open={modal.modal}
-          close={closeModal}
-          title="아이디"
-          contents="아이디가 공백입니다."
-        ></Modal>
-        </Spring>
       </form>
     );
   }

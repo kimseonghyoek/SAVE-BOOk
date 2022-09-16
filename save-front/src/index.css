@@ -14,3 +14,16 @@ body {
   flex-wrap: wrap;
   justify-content: center; */
 }
+
+#root {
+  position: relative;
+  top: 0;
+  bottom: 0;
+}
+
+.modal{
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

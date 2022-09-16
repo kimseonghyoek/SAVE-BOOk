@@ -4,8 +4,11 @@ import Card from "../container/Card";
 import { modalState } from "../store/store";
 import Button from "./Button";
 import './css/modal.css';
+import Animate from 'rc-animate';
 
 const Modal = (props) => {
+
+  const [opacity, setOpacity] = useState(90);
 
   if(props.open === true) {
     return (
@@ -15,7 +18,7 @@ const Modal = (props) => {
           </div>
           <div className="p-4">{props.contents}</div>
           <div className="flex flex-row-reverse">
-            <Button styled="bg-maincolor1 w-middle h-small rounded-half text-small2" text="CLOSE" onClick={props.close}/>
+            <Button styled={"bg-maincolor1 w-middle h-small rounded-half text-small2 " + `opacity-${opacity}`} text="CLOSE" onClick={props.close}/>
           </div>
       </Card>
     );

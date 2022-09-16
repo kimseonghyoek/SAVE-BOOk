@@ -10,7 +10,7 @@ const Singup = (props) => {
       <h1 className="text-white text-big text-center p-3 font-Chewy">
         Save Book
       </h1>
-      <Card styled="bg-maincolor2 flex flex-col  h-signup  p-4 justify-center">
+      <Card styled="bg-maincolor2 flex flex-col  h-signup m-4 p-8 justify-center">
         <h1 className="text-white text-middle2 p-4 pb-2">
           SAVE BOOK 에 오신 것을 환영합니다.
         </h1>

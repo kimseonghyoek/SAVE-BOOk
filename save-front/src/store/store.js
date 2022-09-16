@@ -13,3 +13,24 @@ export const password = atom({
     pw: ""
   }
 });
+
+export const checkP = atom({
+  key: "secondPw",
+  default: {
+    cp: ""
+  }
+})
+
+export const nickname = atom({
+  key: "nickname",
+  default: {
+    name: ""
+  }
+});
+
+export const modalState = atom({
+  key: "modal",
+  default: {
+    modal: false
+  }
+})

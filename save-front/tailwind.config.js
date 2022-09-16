@@ -10,7 +10,8 @@ module.exports = {
       "black" : "#000000",
       "maincolor1" : "#2CA474",
       "maincolor2" : "#222429",
-      "green" : "#00B388"
+      "green" : "#00B388",
+      "popup" : "#616672"
     },
     width: {
       "wrap" : "1000px",
@@ -22,7 +23,8 @@ module.exports = {
       "full" : "100vh",
       "signup":"25vw",
       "hw" : "50%",
-      "half" : "24%"
+      "half" : "24%",
+      "modal" : "20vw"
     },
     height: {
       "square" : "20px",
@@ -43,7 +45,8 @@ module.exports = {
       "black" : "#000000",
       "maincolor1" : "#2CA474",
       "maincolor2" : "#242424",
-      "gray" : "#BCBDBF"
+      "gray" : "#BCBDBF",
+      "popup" : "#616672"
     },
     fontFamily: {
       "Chewy" : ['Chewy', 'cursive'],

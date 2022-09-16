@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Card from "./Card";
 import { useRecoilState } from "recoil";
-import { identication, isSignUp, password } from "../store/store.js";
-import { useLocation } from "react-router-dom";
+import {
+  checkP,
+  identication,
+  isSignUp,
+  modalState,
+  nickname,
+  password,
+} from "../store/store.js";
+import { Link, useLocation } from "react-router-dom";
+import Modal from "../components/Modal";
+import Spring from 'react-spring';
 
 const LoginForm = () => {
+  const getURL = useLocation();
   const [id, setId] = useRecoilState(identication);
   const [pw, setPw] = useRecoilState(password);
+  const [name, setName] = useRecoilState(nickname);
+  const [secondPw, setSPw] = useRecoilState(checkP);
+  const [modal, setModal] = useRecoilState(modalState);
 
   const changeID = (e) => {
     e.preventDefault();
@@ -24,12 +37,47 @@ const LoginForm = () => {
     });
   };
 
-  const getURL = useLocation();
+  const changeNN = (e) => {
+    e.preventDefault();
+    setName({
+      name: e.target.value,
+    });
+  };
+
+  const changeCP = (e) => {
+    e.preventDefault();
+    setSPw({
+      secondPw: e.target.value,
+    });
+  };
+
+  const openModal = () => {
+    console.log("test");
+    setModal({
+      modal: true,
+    });
+  };
+
+  const closeModal = () => {
+    setModal({
+      modal: false,
+    });
+    console.log(modal.modal);
+  };
+
+  const checkSumbit = (e) => {
+    e.preventDefault();
+
+    if (id.id === "" || id.id === null) {
+      openModal();
+      <Modal></Modal>;
+    }
+  };
 
   if (getURL.pathname === "/") {
     return (
       <Card styled="bg-maincolor2 p-8 flex flex-row justify-center w-half">
-        <form className="flex flex-col">
+        <form className="flex flex-col" onSubmit={checkSumbit}>
           <Input
             placeholder="아이디"
             styled="p-3 m-3 w-long rounded-half"
@@ -51,17 +99,19 @@ const LoginForm = () => {
       </Card>
     );
   } else if (getURL.pathname === "/signup") {
+    console.log(modal.modal);
     return (
-      <form className="flex flex-col">
+      <form className="flex flex-col" onSubmit={checkSumbit}>
         <Input
           placeholder="닉네임"
           styled="p-3 m-3 w-long rounded-half"
-          onChange={changeID}
+          onChange={changeNN}
         />
         <Input
           placeholder="아이디"
           styled="p-3 m-3 w-long rounded-half"
           onChange={changeID}
+          value={id.id}
         />
         <Input
           placeholder="비밀번호"
@@ -71,16 +121,28 @@ const LoginForm = () => {
         <Input
           placeholder="비밀번호 확인"
           styled="p-3 m-3 w-long rounded-half"
-          onChange={changePw}
+          onChange={changeCP}
         />
         <div className="text-white flex items-center m-3">
-          <input type="checkbox" className="w-square h-square m-2 "/>
+          <input type="checkbox" className="w-square h-square m-2 " />
           <h5>회원가입에 동의 하시나요?</h5>
         </div>
         <Button
           styled="bg-maincolor1 inline-block text-white w-big h-middle rounded-test m-auto mt-7"
-          text="회원가입" block="true"
+          text="회원가입"
+          type="true"
+          onClick={checkSumbit}
         ></Button>
+        <Spring 
+        from={{ opacity: 0 }}
+        to={{opacity: 100}}>
+         <Modal
+          open={modal.modal}
+          close={closeModal}
+          title="아이디"
+          contents="아이디가 공백입니다."
+        ></Modal>
+        </Spring>
       </form>
     );
   }

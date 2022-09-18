@@ -6,22 +6,25 @@ import { useRecoilState } from "recoil";
 import {
   checkP,
   identication,
-  isSignUp,
   modalState,
   nickname,
   password,
 } from "../store/store.js";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Modal from "../components/Modal";
 import ModalPortal from "../Portal";
 
 const LoginForm = () => {
+  
   const getURL = useLocation();
   const [id, setId] = useRecoilState(identication);
   const [pw, setPw] = useRecoilState(password);
   const [name, setName] = useRecoilState(nickname);
   const [secondPw, setSPw] = useRecoilState(checkP);
   const [modal, setModal] = useRecoilState(modalState);
+
+  let modaltext = [];
+  const [result, setResult] = useState('');
 
   const changeID = (e) => {
     e.preventDefault();
@@ -52,7 +55,6 @@ const LoginForm = () => {
   };
 
   const openModal = () => {
-    console.log("test");
     setModal({
       modal: true,
     });
@@ -69,15 +71,35 @@ const LoginForm = () => {
     e.preventDefault();
 
     if (id.id === "" || id.id === null) {
+      modaltext.push("아이디");
       openModal();
-      <Modal></Modal>;
     }
+    if (pw.pw === "" || pw.pw === null) {
+      modaltext.push("비밀번호");
+      openModal();
+    }
+    if (name.name === "" || name.name === null) {
+      modaltext.push("닉네임");
+      openModal();
+    }
+    if (secondPw.cp === "" || secondPw.cp === null) {
+      modaltext.push("2차 비밀번호");
+      openModal();
+    }
+    if (pw.pw !== secondPw) {
+      openModal();
+    }
+    modaltext.push("빈 칸 입니다.");
+    setResult({
+      result: modaltext.join(" ")
+    })
+    console.log(result)
   };
 
   if (getURL.pathname === "/") {
     return (
       <Card styled="bg-maincolor2 p-8 flex flex-row justify-center w-half">
-        <form className="flex flex-col" onSubmit={checkSumbit}>
+        <form className="flex flex-col">
           <Input
             placeholder="아이디"
             styled="p-3 m-3 w-long rounded-half"
@@ -99,7 +121,6 @@ const LoginForm = () => {
       </Card>
     );
   } else if (getURL.pathname === "/signup") {
-    console.log(modal.modal);
     return (
       <form className="flex flex-col" onSubmit={checkSumbit}>
         <Input
@@ -133,6 +154,17 @@ const LoginForm = () => {
           type="true"
           onClick={checkSumbit}
         ></Button>
+        <ModalPortal>
+          {modal.modal ? (
+            <Modal
+              open={modal.modal}
+              close={closeModal}
+              title=""
+              btnTrue="false"
+              contents={result.result}
+            ></Modal>
+          ) : null}
+        </ModalPortal>
       </form>
     );
   }

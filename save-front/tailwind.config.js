@@ -11,7 +11,8 @@ module.exports = {
       "maincolor1" : "#2CA474",
       "maincolor2" : "#222429",
       "green" : "#00B388",
-      "popup" : "#616672"
+      "popup" : "#616672",
+      "danger" : "#CD3861" 
     },
     width: {
       "wrap" : "1000px",
@@ -24,7 +25,7 @@ module.exports = {
       "signup":"25vw",
       "hw" : "50%",
       "half" : "24%",
-      "modal" : "20vw"
+      "modal" : "22vw"
     },
     height: {
       "square" : "20px",

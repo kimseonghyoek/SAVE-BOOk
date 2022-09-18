@@ -21,20 +21,23 @@ const Modal = (props) => {
     return (
       <Card
         styled={
-          "border-2 border-popup bg-maincolor2 text-white p-4 w-modal rounded-half z-5 modal" +
+          "border-2 border-popup bg-danger text-white p-4 w-modal rounded-half z-5 modal m-2 " +
           ` opacity-${opacity}`
         }
       >
         <div className="flex justify-between items-center">
           <h1>{props.title}</h1>
         </div>
-        <div className="p-4">{props.contents}</div>
+        <div className="p-4 text-center">{props.contents}</div>
         <div className="flex flex-row-reverse">
+        {
+          props.btnTrue === "true" ? 
           <Button
             styled="bg-maincolor1 w-middle h-small rounded-half text-small2 "
             text="CLOSE"
             onClick={props.close}
-          />
+          /> : null
+        }
         </div>
       </Card>
     );

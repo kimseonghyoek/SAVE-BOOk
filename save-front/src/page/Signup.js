@@ -5,18 +5,28 @@ import Modal from "../components/Modal";
 import Card from "../container/Card";
 import LoginForm from "../container/LoginForm";
 import ModalPortal from "../Portal";
-import { modalState } from "../store/store";
+import {
+  checkP,
+  identication,
+  modalState,
+  nickname,
+  password,
+} from "../store/store";
 import "./css/signup.css";
 
 const Singup = (props) => {
   const [modal, setModal] = useRecoilState(modalState);
-
+  const [id, setId] = useRecoilState(identication);
+  const [pw, setPw] = useRecoilState(password);
+  const [name, setName] = useRecoilState(nickname);
+  const [secondPw, setSPw] = useRecoilState(checkP);
   const closeModal = () => {
     setModal({
       modal: false,
     });
     console.log(modal.modal);
   };
+
 
   return (
     <>
@@ -38,32 +48,45 @@ const Singup = (props) => {
           </Link>
           <LoginForm />
         </Card>
-        <ModalPortal>
-          {modal.modal ? (
-            <Modal
-              open={modal.modal}
-              close={closeModal}
-              title="아이디"
-              contents="아이디가 공백입니다."
-            ></Modal>
-          ) : null}
-          {modal.modal ? (
-            <Modal
-              open={modal.modal}
-              close={closeModal}
-              title="아이디"
-              contents="아이디가 공백입니다."
-            ></Modal>
-          ) : null}
-          {modal.modal ? (
-            <Modal
-              open={modal.modal}
-              close={closeModal}
-              title="아이디"
-              contents="아이디가 공백입니다."
-            ></Modal>
-          ) : null}
-        </ModalPortal>
+        {/* {id.id === "" || name.name === "" || pw.pw === "" ? (
+          <ModalPortal>
+            {modal.modal ? (
+              <Modal
+                open={modal.modal}
+                close={closeModal}
+                title=""
+                btnTrue = "false"
+                contents=""
+              ></Modal>
+            ) : null}
+          </ModalPortal>
+        ) : null} */}
+        {/* {name.name === "" ? (
+          <ModalPortal>
+            {modal.modal ? (
+              <Modal
+                open={modal.modal}
+                close={closeModal}
+                title=""
+                btnTrue = "false"
+                contents="닉네임이 공백입니다."
+              ></Modal>
+            ) : null}
+          </ModalPortal>
+        ) : null}
+        {pw.pw === "" ? (
+          <ModalPortal>
+            {modal.modal ? (
+              <Modal
+                open={modal.modal}
+                close={closeModal}
+                title=""
+                btnTrue = "false"
+                contents="비밀번호가 공백입니다."
+              ></Modal>
+            ) : null}
+          </ModalPortal>
+        ) : null} */}
       </div>
     </>
   );

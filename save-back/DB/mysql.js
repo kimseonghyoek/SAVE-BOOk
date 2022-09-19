@@ -1,17 +1,20 @@
 const mysql = require('mysql2/promise');
 
-const database = async() => {
-  try {
-    let conn = await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      port: '3308',
-      password: 'sad123',
-      database: 'savebook'
-    });
-  } catch (err) {
-    console.log(err);
-  }
-}
+const conn = mysql.createPool({
+  host: 'localhost',
+  port: 3308,
+  user: 'root',
+  password: 'sad123',
+  database: 'savebook'
+});
 
-module.exports = database;
+exports.getConnectionPool = (callback) => {
+  conn.getConnection((err, conn) => {
+    if(err) {
+      console.log(err);
+    } if(!err) {
+      console.log('Pass');
+      callback(conn);
+    }
+  })
+}

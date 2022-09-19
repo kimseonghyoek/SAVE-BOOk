@@ -9,6 +9,7 @@ const Input = (props) => {
         placeholder={props.placeholder}
         className={"border-2 border-gray " + props.styled}
         onChange={props.onChange}
+        type={props.type}
       />
     </div>
   );

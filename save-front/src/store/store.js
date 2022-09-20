@@ -15,9 +15,9 @@ export const password = atom({
 });
 
 export const checkP = atom({
-  key: "secondPw",
+  key: "phonenumber",
   default: {
-    cp: ""
+    phonenumber: ""
   }
 })
 

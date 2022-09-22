@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Card from "./Card";
@@ -7,24 +7,24 @@ import {
   checkP,
   identication,
   modalState,
+  modalText,
   nickname,
   password,
 } from "../store/store.js";
-import { useLocation } from "react-router-dom";
-import Modal from "../components/Modal";
-import ModalPortal from "../Portal";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginForm = () => {
-  
   const getURL = useLocation();
   const [id, setId] = useRecoilState(identication);
   const [pw, setPw] = useRecoilState(password);
   const [name, setName] = useRecoilState(nickname);
-  const [secondPw, setSPw] = useRecoilState(checkP);
+  const [phonenumber, setPn] = useRecoilState(checkP);
   const [modal, setModal] = useRecoilState(modalState);
+  const [result, setResult] = useRecoilState(modalText);
+  const history = useNavigate();
 
   let modaltext = [];
-  const [result, setResult] = useState('');
 
   const changeID = (e) => {
     e.preventDefault();
@@ -47,10 +47,10 @@ const LoginForm = () => {
     });
   };
 
-  const changeCP = (e) => {
+  const changePn = (e) => {
     e.preventDefault();
-    setSPw({
-      secondPw: e.target.value,
+    setPn({
+      phonenumber: e.target.value,
     });
   };
 
@@ -60,40 +60,73 @@ const LoginForm = () => {
     });
   };
 
-  const closeModal = () => {
-    setModal({
-      modal: false,
+  const initState = () => {
+    setId({
+      id: "",
     });
-    console.log(modal.modal);
+
+    setName({
+      name: "",
+    });
+
+    setPw({
+      pw: "",
+    });
+
+    setPn({
+      phonenumber: "",
+    });
   };
 
   const checkSumbit = (e) => {
     e.preventDefault();
 
-    if (id.id === "" || id.id === null) {
-      modaltext.push("아이디");
-      openModal();
-    }
-    if (pw.pw === "" || pw.pw === null) {
-      modaltext.push("비밀번호");
-      openModal();
-    }
-    if (name.name === "" || name.name === null) {
+    let check = false;
+
+    if (name.name === "") {
       modaltext.push("닉네임");
+      check = true;
       openModal();
     }
-    if (secondPw.cp === "" || secondPw.cp === null) {
-      modaltext.push("2차 비밀번호");
+    if (id.id === "") {
+      modaltext.push("이메일");
+      check = true;
       openModal();
     }
-    if (pw.pw !== secondPw) {
+    if (pw.pw === "") {
+      modaltext.push("비밀번호");
+      check = true;
+      openModal();
+    }
+    if (phonenumber.phonenumber === "") {
+      modaltext.push("전화번호");
+      check = true;
       openModal();
     }
     modaltext.push("빈 칸 입니다.");
+
     setResult({
-      result: modaltext.join(" ")
-    })
-    console.log(result)
+      text: modaltext.join(" "),
+    });
+
+    if (check === false) {
+      axios
+        .post("/signup/post", {
+          nickname: name.name,
+          email: id.id,
+          pw: pw.pw,
+          phonenumber: phonenumber.phonenumber,
+        })
+        .then((res) => {
+          console.log(res);
+          alert("회원가입 완료!");
+          history("/");
+          initState();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   if (getURL.pathname === "/") {
@@ -122,14 +155,19 @@ const LoginForm = () => {
     );
   } else if (getURL.pathname === "/signup") {
     return (
-      <form className="flex flex-col" onSubmit={checkSumbit}>
+      <form
+        className="flex flex-col"
+        action=""
+        method="GET"
+        onSubmit={checkSumbit}
+      >
         <Input
           placeholder="닉네임"
           styled="p-3 m-3 w-long rounded-half"
           onChange={changeNN}
         />
         <Input
-          placeholder="아이디"
+          placeholder="이메일"
           styled="p-3 m-3 w-long rounded-half"
           onChange={changeID}
           value={id.id}
@@ -138,11 +176,13 @@ const LoginForm = () => {
           placeholder="비밀번호"
           styled="p-3 m-3 w-long rounded-half"
           onChange={changePw}
+          type="password"
         />
         <Input
-          placeholder="비밀번호 확인"
+          placeholder="전화번호 - 빼고 입력"
           styled="p-3 m-3 w-long rounded-half"
-          onChange={changeCP}
+          onChange={changePn}
+          type="number"
         />
         <div className="text-white flex items-center m-3">
           <input type="checkbox" className="w-square h-square m-2 " />
@@ -151,20 +191,8 @@ const LoginForm = () => {
         <Button
           styled="bg-maincolor1 inline-block text-white w-big h-middle rounded-test m-auto mt-7"
           text="회원가입"
-          type="true"
-          onClick={checkSumbit}
+          type="submit"
         ></Button>
-        <ModalPortal>
-          {modal.modal ? (
-            <Modal
-              open={modal.modal}
-              close={closeModal}
-              title=""
-              btnTrue="false"
-              contents={result.result}
-            ></Modal>
-          ) : null}
-        </ModalPortal>
       </form>
     );
   }

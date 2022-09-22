@@ -29,3 +29,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* Input 컴포넌트에서 옆에 증가 버튼 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

@@ -28,6 +28,13 @@ export const nickname = atom({
   }
 });
 
+export const modalText = atom({
+  key: "text",
+  default: {
+    text: ''
+  }
+})
+
 export const modalState = atom({
   key: "modal",
   default: {

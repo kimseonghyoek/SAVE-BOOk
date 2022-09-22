@@ -5,28 +5,20 @@ import Modal from "../components/Modal";
 import Card from "../container/Card";
 import LoginForm from "../container/LoginForm";
 import ModalPortal from "../Portal";
-import {
-  checkP,
-  identication,
-  modalState,
-  nickname,
-  password,
-} from "../store/store";
+import { modalState, modalText } from "../store/store";
 import "./css/signup.css";
 
-const Singup = (props) => {
+const Signup = (props) => {
+
   const [modal, setModal] = useRecoilState(modalState);
-  const [id, setId] = useRecoilState(identication);
-  const [pw, setPw] = useRecoilState(password);
-  const [name, setName] = useRecoilState(nickname);
-  const [secondPw, setSPw] = useRecoilState(checkP);
+  const [result, setResult] = useRecoilState(modalText);
+
   const closeModal = () => {
     setModal({
       modal: false,
     });
     console.log(modal.modal);
   };
-
 
   return (
     <>
@@ -48,48 +40,21 @@ const Singup = (props) => {
           </Link>
           <LoginForm />
         </Card>
-        {/* {id.id === "" || name.name === "" || pw.pw === "" ? (
-          <ModalPortal>
-            {modal.modal ? (
-              <Modal
-                open={modal.modal}
-                close={closeModal}
-                title=""
-                btnTrue = "false"
-                contents=""
-              ></Modal>
-            ) : null}
-          </ModalPortal>
-        ) : null} */}
-        {/* {name.name === "" ? (
-          <ModalPortal>
-            {modal.modal ? (
-              <Modal
-                open={modal.modal}
-                close={closeModal}
-                title=""
-                btnTrue = "false"
-                contents="닉네임이 공백입니다."
-              ></Modal>
-            ) : null}
-          </ModalPortal>
-        ) : null}
-        {pw.pw === "" ? (
-          <ModalPortal>
-            {modal.modal ? (
-              <Modal
-                open={modal.modal}
-                close={closeModal}
-                title=""
-                btnTrue = "false"
-                contents="비밀번호가 공백입니다."
-              ></Modal>
-            ) : null}
-          </ModalPortal>
-        ) : null} */}
       </div>
+      <ModalPortal>
+        {modal.modal ? (
+          <Modal
+            open={modal.modal}
+            close={closeModal}
+            title=""
+            btnTrue="false"
+            contents={result.text}
+            >
+          </Modal>
+        ) : null}
+      </ModalPortal>
     </>
   );
 };
 
-export default Singup;
+export default Signup;

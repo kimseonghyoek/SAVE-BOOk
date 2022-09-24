@@ -11,7 +11,7 @@ import "./css/signup.css";
 const Signup = (props) => {
 
   const [modal, setModal] = useRecoilState(modalState);
-  const [result, setResult] = useRecoilState(modalText);
+  const [result] = useRecoilState(modalText);
 
   const closeModal = () => {
     setModal({

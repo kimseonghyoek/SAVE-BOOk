@@ -3,6 +3,7 @@ const app = express();
 const PORT = 8081;
 const authRouter = require('./Routes/authRouter');
 const passport = require('passport');
+const passportConfig = require('./passport/config/index');
 const cors = require('cors');
 const session = require('express-session');
 
@@ -14,11 +15,12 @@ app.get("/", (req, res) => {
 });
 app.use(session({ secret:"test",resave:false,saveUninitialized:true}));
 app.use(express.json());
+passportConfig();
 app.use(passport.initialize());
 app.use(passport.session());
 
 // router
-app.use("/signup", authRouter);
+app.use("/auth", authRouter);
 
 app.listen(PORT, () => {
   console.log(`http:localhost:${PORT}`);

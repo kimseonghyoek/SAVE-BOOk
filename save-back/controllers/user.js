@@ -46,19 +46,23 @@ exports.userCheck = async (req, res) => {
 }
 
 exports.login = () => {
+  console.log("이거는 타는거냐"),
   /* 추가 시킬 부분
   req.body로 로그인 id, pw 받고 pw hased 풀고
   SQL 구문으로 보내서 비교 후 맞으면 로그인 후 세션 생성
   */
   (req, res, next) => {
+    console.log("얘도?")
     passport.authenticate('local', {
       session: false
     })(req, res, next);
   }, (req, res) => {
     if(req.user) {
+      console.log("탐1?")
       const user = {email: req.user.email, nickname: req.user.nickname};
       res.send(user);
     }
+    console.log("user.js :" + res)
     res.end();
   }
 }

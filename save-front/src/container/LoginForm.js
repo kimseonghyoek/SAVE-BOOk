@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Card from "./Card";
@@ -78,7 +78,47 @@ const LoginForm = () => {
     });
   };
 
-  const checkSumbit = (e) => {
+  const checkSignin = (e) => {
+    e.preventDefault();
+
+    let check = false;
+
+    if (id.id === "") {
+      modaltext.push("이메일");
+      check = true;
+      openModal();
+    }
+    if (pw.pw === "") {
+      modaltext.push("비밀번호");
+      check = true;
+      openModal();
+    }
+    modaltext.push("빈 칸 입니다.");
+
+    setResult({
+      text: modaltext.join(" "),
+    });
+
+    if (check === false) {
+      // 로그인 보내기
+      axios
+        .post("auth/post", {
+          email: id.id,
+          pw: pw.pw,
+        })
+        .then((res) => {
+          console.log(res);
+          alert("로그인 완료");
+          initState();
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("로그인 실패");
+        });
+    }
+  };
+
+  const checkSubmit = (e) => {
     e.preventDefault();
 
     let check = false;
@@ -111,7 +151,7 @@ const LoginForm = () => {
 
     if (check === false) {
       axios
-        .post("/signup/post", {
+        .post("/auth/signup/post", {
           nickname: name.name,
           email: id.id,
           pw: pw.pw,
@@ -125,6 +165,7 @@ const LoginForm = () => {
         })
         .catch((err) => {
           console.log(err);
+          alert("회원가입 실패!");
         });
     }
   };
@@ -132,7 +173,7 @@ const LoginForm = () => {
   if (getURL.pathname === "/") {
     return (
       <Card styled="bg-maincolor2 p-8 flex flex-row justify-center w-half">
-        <form className="flex flex-col">
+        <form className="flex flex-col" onSubmit={checkSignin}>
           <Input
             placeholder="아이디"
             styled="p-3 m-3 w-long rounded-half"
@@ -149,17 +190,18 @@ const LoginForm = () => {
           <Button
             styled="bg-maincolor1 inline-block text-white w-big h-middle rounded-test m-auto mt-7"
             text="로그인"
+            type="submit"
           ></Button>
         </form>
       </Card>
     );
-  } else if (getURL.pathname === "/signup") {
+  } else if (getURL.pathname === "/auth/signup") {
     return (
       <form
         className="flex flex-col"
         action=""
         method="GET"
-        onSubmit={checkSumbit}
+        onSubmit={checkSubmit}
       >
         <Input
           placeholder="닉네임"

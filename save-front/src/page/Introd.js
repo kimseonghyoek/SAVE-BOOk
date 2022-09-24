@@ -27,7 +27,7 @@ const Introd = () => {
               SAVE BOOK은 오직 온라인에서만 만나는 서비스입니다. <br />
               도서가 급하게 필요할 때 마하 배송도 가능합니다.
             </p>
-            <Link to="/signup">
+            <Link to="/auth/signup">
               <p className="fadein pt-14` underline text-bold pl-44">
                 당신의 어깨가 무겁다면?
               </p>

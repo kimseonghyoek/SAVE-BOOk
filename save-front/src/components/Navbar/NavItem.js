@@ -4,7 +4,7 @@ export const NavItem = [
     link: '#'
   },
   {
-    nane: 'Office Supplies',
+    name: 'Office Supplies',
     link: '#'
   },
   {

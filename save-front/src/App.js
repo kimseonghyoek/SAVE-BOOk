@@ -4,6 +4,7 @@ import Modal from "./components/Modal";
 import Home from "./page/Home";
 import Introd from "./page/Introd";
 import Signup from './page/Signup';
+import Header from './components/Navbar/Header';
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
         <Route path="/" element={<Home/>}/>
         <Route path="/service" element={<Introd/>}/>
         <Route path="/auth/signup" element={<Signup/>}/>
-        <Route path="/test" element={<Modal/>}/>
+        <Route path="/test" element={<Header/>}/>    
       </Routes>
     </div>
   );

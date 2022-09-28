@@ -21,13 +21,10 @@ const Header = () => {
           <div className="flex flex-row items-center p-8">
             <div className="p-8">
               <ul className="flex flex-row text-white">
-                {/* <HeadItem name="Book" link="/" />
-                <HeadItem name="Office Supplies" link="/" />
-                <HeadItem name="Album" link="/" /> */}
                 {
-                  NavItem.map((item, index) => {
+                  NavItem.map(item => {
                     return (
-                      <HeadItem key={index} name={item.name} link={item.link}/>
+                      <HeadItem name={item.name} link={item.link} key={item.key}/>
                     )
                   })
                 }
@@ -42,7 +39,7 @@ const Header = () => {
         </div>
       </PC>
       <Mobile>
-        <div className="h-header bg-green flex items-center justify-between p-4">
+        <div className="h-header bg-green flex items-center justify-between p-4 text-white">
             <h1 className="text-middle2 p-3">SAVE BOOK</h1>
             <HItems/>
         </div>

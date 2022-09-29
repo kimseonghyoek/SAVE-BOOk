@@ -41,3 +41,10 @@ export const modalState = atom({
     modal: false
   }
 })
+
+export const headerItem = atom({
+  key: "hItem",
+  default: {
+    showItem: false
+  }
+})

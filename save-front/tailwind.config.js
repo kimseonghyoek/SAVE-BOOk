@@ -22,13 +22,14 @@ module.exports = {
       "small":"80px",
       "square" : "20px",
       "long" : "360px",
-      "full" : "100vh",
+      "full" : "100vw",
       "signup":"25vw",
       "hw" : "50%",
       "half" : "24%",
       "modal" : "22vw",
       "Mprofile" : "50px",
-      "itemsbtn" : "28px"
+      "itemsbtn" : "28px",
+      "full2" : "100%"
     },
     height: {
       "square" : "20px",

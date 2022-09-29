@@ -4,9 +4,13 @@ import Input from "../Input";
 import HItems from "../../Mobile/components/HItems";
 import { Mobile, PC } from "../../Responsive/responsive";
 import { NavItem } from "./NavItem";
-
+import { useRecoilState } from "recoil";
+import { headerItem } from "../../store/store";
 
 const Header = () => {
+
+  const [showItem] = useRecoilState(headerItem);
+
   return (
     <>
       <PC>
@@ -21,13 +25,15 @@ const Header = () => {
           <div className="flex flex-row items-center p-8">
             <div className="p-8">
               <ul className="flex flex-row text-white">
-                {
-                  NavItem.map(item => {
-                    return (
-                      <HeadItem name={item.name} link={item.link} key={item.key}/>
-                    )
-                  })
-                }
+                {NavItem.map((item) => {
+                  return (
+                    <HeadItem
+                      name={item.name}
+                      link={item.link}
+                      key={item.key}
+                    />
+                  );
+                })}
               </ul>
             </div>
             <img
@@ -39,9 +45,22 @@ const Header = () => {
         </div>
       </PC>
       <Mobile>
-        <div className="h-header bg-green flex items-center justify-between p-4 text-white">
+        <div className="flex flex-col">
+          <div className="h-header bg-green flex items-center justify-between p-4 text-white">
             <h1 className="text-middle2 p-3">SAVE BOOK</h1>
-            <HItems/>
+            <HItems />
+          </div>
+          <div className="flex flex-col items-center border-2 border-gray">
+            {
+              showItem.showItem ? NavItem.map((item) => {
+              return (
+                <div className="hover:shadow-xl text-center">
+                  <HeadItem name={item.name} link={item.link} key={item.key} styled="w-full" />
+                </div>
+              );
+            }) : null
+            }
+          </div>
         </div>
       </Mobile>
     </>

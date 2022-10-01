@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <>
       <PC>
-        <div className="h-header bg-green flex items-center justify-between">
+        <div className="h-header bg-green flex items-center justify-between sticky top-0" id="header">
           <div className="p-3 flex flex-row items-center">
             <h1 className="text-middle pl-9 pr-9 text-white">SAVE BOOK</h1>
             <Input
@@ -54,7 +54,7 @@ const Header = () => {
             {
               showItem.showItem ? NavItem.map((item) => {
               return (
-                <div className="hover:shadow-xl text-center">
+                <div className="hover:shadow-xl text-center" id="header">
                   <HeadItem name={item.name} link={item.link} key={item.key} styled="w-full" />
                 </div>
               );

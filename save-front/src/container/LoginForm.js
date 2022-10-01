@@ -160,7 +160,7 @@ const LoginForm = () => {
         .then((res) => {
           console.log(res);
           alert("회원가입 완료!");
-          history("/");
+          history("/index");
           initState();
         })
         .catch((err) => {

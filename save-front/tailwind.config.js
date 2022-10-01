@@ -29,7 +29,8 @@ module.exports = {
       "modal" : "22vw",
       "Mprofile" : "50px",
       "itemsbtn" : "28px",
-      "full2" : "100%"
+      "full2" : "100%",
+      "mainC" : "85%"
     },
     height: {
       "square" : "20px",
@@ -40,7 +41,9 @@ module.exports = {
       "signup" : "65vh",
       "book":"600px",
       "header":"9vh",
-      "Mprofile" : "50px"
+      "Mprofile" : "50px",
+      "mainC" : "90vh",
+      "hw" : "70%"
     },
     borderRadius: {
       "default":"5%",
@@ -57,11 +60,13 @@ module.exports = {
     },
     fontFamily: {
       "Chewy" : ['Chewy', 'cursive'],
+      "Gamja" : ['Gamja Flower', 'cursive'],
     },
     fontSize: {
       "small2" : "12px",
       "small":"8px",
       "big":"100px",
+      "big2" : "85px",
       "middle": "25px",
       "middle2": "20px",
       "bold" : "45px"

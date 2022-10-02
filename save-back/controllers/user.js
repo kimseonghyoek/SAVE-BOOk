@@ -25,6 +25,7 @@ exports.userCheck = async (req, res) => {
         if(rows.length) {
           console.log("회원이 있음");
           console.log(rows);
+          return res.send({ "msg" : "입력하신 이메일이 존재합니다."});
         } else if (rows.length === 0) {
           console.log("회원없음");
           const sql = "INSERT INTO user_table SET ?";
@@ -34,7 +35,7 @@ exports.userCheck = async (req, res) => {
             } else {
               console.log('가입완료');
               console.log(rows);
-              res.send(rows)
+              res.send(rows);
             }
             conn.release();
           })

@@ -159,8 +159,11 @@ const LoginForm = () => {
         })
         .then((res) => {
           console.log(res);
-          alert("회원가입 완료!");
-          history("/index");
+          if(res.data.msg === "입력하신 이메일이 존재합니다.") {
+            alert(res.data.msg)
+          } else {
+            alert("퉷")
+          }
           initState();
         })
         .catch((err) => {

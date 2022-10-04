@@ -24,6 +24,6 @@ with open('BestSeller.json', 'a+', encoding='UTF-8') as make_file:
     text = []
     file_data["title"] = title[i]
     file_data["author"] = author[i]
-    text = json.dumps(file_data, ensure_ascii=False)
+    text = json.loads(json.dumps(file_data, ensure_ascii=False))
     a.append(text)
   json.dump(a, make_file, ensure_ascii=False)

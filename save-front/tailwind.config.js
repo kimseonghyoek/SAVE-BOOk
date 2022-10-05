@@ -32,7 +32,8 @@ module.exports = {
       "Mprofile" : "50px",
       "itemsbtn" : "28px",
       "full2" : "100%",
-      "mainC" : "75%"
+      "mainC" : "85%",
+      "bookImg" : "10%"
     },
     height: {
       "square" : "20px",

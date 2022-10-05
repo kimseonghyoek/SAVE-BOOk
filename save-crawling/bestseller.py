@@ -21,7 +21,7 @@ book_contents = book_list.findAll("div", {"class" :  "detail"})
 # 제목
 title = [i.find("div", {"class" : "title"}).find("strong").text for i in book_contents]
 # 저자
-author = [i.find("div", {"class" : "author"}).text[24 : 26] for i in book_contents]
+author = [i.find("div", {"class" : "author"}).text[24 : 27] for i in book_contents]
 # 이미지
 cover = book_list.findAll("div", {"class" : "cover"})
 book_img = [i.find("img") for i in cover]

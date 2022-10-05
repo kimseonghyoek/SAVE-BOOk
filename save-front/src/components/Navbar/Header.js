@@ -30,7 +30,6 @@ const Header = () => {
                     <HeadItem
                       name={item.name}
                       link={item.link}
-                      key={item.key}
                     />
                   );
                 })}
@@ -55,7 +54,7 @@ const Header = () => {
               showItem.showItem ? NavItem.map((item) => {
               return (
                 <div className="hover:shadow-xl text-center" id="header">
-                  <HeadItem name={item.name} link={item.link} key={item.key} styled="w-full" />
+                  <HeadItem name={item.name} link={item.link} styled="w-full" />
                 </div>
               );
             }) : null

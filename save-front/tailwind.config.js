@@ -15,7 +15,8 @@ module.exports = {
       "popup" : "#616672",
       "danger" : "#CD3861",
       "test" : "#BAFFCD",
-      "blue" : "#6198FF"
+      "blue" : "#6198FF",
+      "yellow" : "#F9E918"
     },
     width: {
       "wrap" : "1000px",
@@ -33,7 +34,10 @@ module.exports = {
       "itemsbtn" : "28px",
       "full2" : "100%",
       "mainC" : "85%",
-      "bookImg" : "10%"
+      "bookImg" : "165px",
+      "wrapBest" :  "235px",
+      "subC" : "120px",
+      "wrapSub" : "20vw"
     },
     height: {
       "square" : "20px",
@@ -45,8 +49,10 @@ module.exports = {
       "book":"600px",
       "header":"9vh",
       "Mprofile" : "50px",
-      "mainC" : "90vh",
-      "hw" : "70%"
+      "mainC" : "80vh",
+      "hw" : "70%",
+      "bookImg" : "230px",
+      "subC" : "120px"
     },
     borderRadius: {
       "default":"5%",
@@ -63,13 +69,14 @@ module.exports = {
     },
     fontFamily: {
       "Chewy" : ['Chewy', 'cursive'],
-      "Gamja" : ['Gamja Flower', 'cursive'],
+      "Gamja" : ['Gamja Flower', 'sans-serif'],
+      'Titillium' : ['Titillium Web', 'sans-serif']
     },
     fontSize: {
       "small2" : "12px",
       "small":"8px",
       "big":"100px",
-      "big2" : "75px",
+      "big2" : "55px",
       "middle": "25px",
       "middle2": "20px",
       "bold" : "35px"

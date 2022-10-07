@@ -13,6 +13,7 @@ import {
 } from "../store/store.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Mobile, PC } from "../Responsive/responsive";
 
 const LoginForm = () => {
   const getURL = useLocation();
@@ -22,7 +23,6 @@ const LoginForm = () => {
   const [phonenumber, setPn] = useRecoilState(checkP);
   const [modal, setModal] = useRecoilState(modalState);
   const [result, setResult] = useRecoilState(modalText);
-  const history = useNavigate();
 
   let modaltext = [];
 
@@ -159,10 +159,10 @@ const LoginForm = () => {
         })
         .then((res) => {
           console.log(res);
-          if(res.data.msg === "입력하신 이메일이 존재합니다.") {
-            alert(res.data.msg)
+          if (res.data.msg === "입력하신 이메일이 존재합니다.") {
+            alert(res.data.msg);
           } else {
-            alert("퉷")
+            alert("퉷");
           }
           initState();
         })
@@ -175,28 +175,56 @@ const LoginForm = () => {
 
   if (getURL.pathname === "/") {
     return (
-      <Card styled="bg-maincolor2 p-8 flex flex-row justify-center w-half">
-        <form className="flex flex-col" onSubmit={checkSignin}>
-          <Input
-            placeholder="아이디"
-            styled="p-3 m-3 w-long rounded-half"
-            onChange={changeID}
-          />
-          <Input
-            placeholder="비밀번호"
-            styled="p-3 m-3 w-long rounded-half"
-            onChange={changePw}
-          />
-          <a className="text-white text-xs w-long text-right hover:text-maincolor1 pt-2 underline">
-            비밀번호를 모르시겠나요?
-          </a>
-          <Button
-            styled="bg-maincolor1 inline-block text-white w-big h-middle rounded-test m-auto mt-7"
-            text="로그인"
-            type="submit"
-          ></Button>
-        </form>
-      </Card>
+      <>
+        <PC>
+          <Card styled="bg-maincolor2 p-8 flex flex-row justify-center w-half">
+            <form className="flex flex-col" onSubmit={checkSignin}>
+              <Input
+                placeholder="아이디"
+                styled="p-3 m-3 w-long rounded-half"
+                onChange={changeID}
+              />
+              <Input
+                placeholder="비밀번호"
+                styled="p-3 m-3 w-long rounded-half"
+                onChange={changePw}
+              />
+              <a className="text-white text-xs w-long text-right hover:text-maincolor1 pt-2 underline">
+                비밀번호를 모르시겠나요?
+              </a>
+              <Button
+                styled="bg-maincolor1 inline-block text-white w-big h-middle rounded-test m-auto mt-7"
+                text="로그인"
+                type="submit"
+              ></Button>
+            </form>
+          </Card>
+        </PC>
+        <Mobile>
+          <Card styled="bg-maincolor2 w-full2 pt-8 pb-8">
+            <form className="flex flex-col" onSubmit={checkSignin}>
+              <Input
+                placeholder="아이디"
+                styled="p-3 m-3 w-mainC rounded-half"
+                onChange={changeID}
+              />
+              <Input
+                placeholder="비밀번호"
+                styled="p-3 m-3 w-mainC rounded-half"
+                onChange={changePw}
+              />
+              <a className="text-white text-xs w-long inline-block text-center w-full2 hover:text-maincolor1 pt-2 underline">
+                비밀번호를 모르시겠나요?
+              </a>
+              <Button
+                styled="bg-maincolor1 inline-block text-white w-bookImg h-middle rounded-test m-auto mt-7"
+                text="로그인"
+                type="submit"
+              ></Button>
+            </form>
+          </Card>
+        </Mobile>
+      </>
     );
   } else if (getURL.pathname === "/auth/signup") {
     return (

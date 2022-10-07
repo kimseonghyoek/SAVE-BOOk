@@ -1,6 +1,5 @@
 import React from "react";
 import Item from "../components/Book/Item";
-import Button from "../components/Button";
 import Header from "../components/Navbar/Header";
 import BestSell from "../container/BestSell";
 import "../index.css";
@@ -42,7 +41,7 @@ const Main = () => {
                   />
                   <SubContents
                     title="RED VELVET (레드벨벳)"
-                    sub="After Like [Single 3]"
+                    sub="THE REVE FESTIVAL"
                     img="red.jpg"
                     styled="hover:bg-blue"
                   />

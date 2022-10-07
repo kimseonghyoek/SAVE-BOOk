@@ -8,6 +8,7 @@ import ModalPortal from "../Portal";
 import { modalState, modalText } from "../store/store";
 import { useRecoilState } from "recoil";
 import Modal from "../components/Modal";
+import { Mobile, PC } from "../Responsive/responsive";
 
 const Home = () => {
   const [modal, setModal] = useRecoilState(modalState);
@@ -19,14 +20,25 @@ const Home = () => {
     console.log(modal.modal);
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center w-full2">
       <div id="background" className="flex justify-center flex-col">
-        <h1 className="text-white text-big text-center p-5 font-Chewy">
-          Save Book
-        </h1>
-        <div className="flex justify-center">
-          <LoginForm />
-        </div>
+        <PC>
+          <h1 className="text-white text-big text-center p-5 font-Chewy">
+            Save Book
+          </h1>
+          <div className="flex justify-center p-8 w-full2">
+            <LoginForm />
+          </div>
+        </PC>
+        <Mobile>
+          <h1 className="text-white text-big2 text-center p-5 font-Chewy">
+            Save Book
+          </h1>
+          <div className="flex justify-center p-4 w-full2">
+            <LoginForm />
+          </div>
+        </Mobile>
+
         <Link to="/service">
           <p className="text-white text-xs underline flex justify-center mt-9">
             아직 Save Book의 회원이 아니신가요?

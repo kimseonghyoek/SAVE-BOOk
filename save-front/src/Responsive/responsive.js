@@ -12,6 +12,17 @@ export const PC = ({children}) => {
   )
 }
 
+export const SPC = ({children}) => {
+  const isSmallPc = useMediaQuery({
+    query: "(max-width:1300px)"
+  });
+  return (
+    <>
+      {isSmallPc && children}
+    </>
+  )
+}
+
 export const Mobile = ({children}) => {
   const isMobile = useMediaQuery({
     query: "(max-width:1257px)"

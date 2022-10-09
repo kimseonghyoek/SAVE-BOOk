@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 
 export const PC = ({children}) => {
   const isPC = useMediaQuery({
-    query: "(min-width:1258px)"
+    query: "(min-width:1300px)"
   });
   return (
     <>
@@ -14,7 +14,7 @@ export const PC = ({children}) => {
 
 export const SPC = ({children}) => {
   const isSmallPc = useMediaQuery({
-    query: "(max-width:1300px)"
+    query: "(min-width:801px) and (max-width:1299px)"
   });
   return (
     <>
@@ -25,7 +25,7 @@ export const SPC = ({children}) => {
 
 export const Mobile = ({children}) => {
   const isMobile = useMediaQuery({
-    query: "(max-width:1257px)"
+    query: "(max-width:800px)"
   });
   return (
     <>

@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../Button";
 import Carousel, {} from 'react-material-ui-carousel'
 import Contents from "./Contetns";
 

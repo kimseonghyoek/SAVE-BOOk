@@ -177,7 +177,7 @@ const LoginForm = () => {
     return (
       <>
         <PC>
-          <Card styled="bg-maincolor2 p-8 flex flex-row justify-center w-half">
+          <Card styled="bg-maincolor2 p-8 flex flex-row justify-center">
             <form className="flex flex-col" onSubmit={checkSignin}>
               <Input
                 placeholder="아이디"
@@ -201,8 +201,8 @@ const LoginForm = () => {
           </Card>
         </PC>
         <Mobile>
-          <Card styled="bg-maincolor2 w-full2 pt-8 pb-8">
-            <form className="flex flex-col" onSubmit={checkSignin}>
+          <Card styled="bg-maincolor2 inline-block pt-8 pb-8">
+            <form className="inline-block text-center" onSubmit={checkSignin}>
               <Input
                 placeholder="아이디"
                 styled="p-3 m-3 w-mainC rounded-half"

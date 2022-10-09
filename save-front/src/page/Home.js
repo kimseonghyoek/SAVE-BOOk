@@ -34,7 +34,7 @@ const Home = () => {
           <h1 className="text-white text-big2 text-center p-5 font-Chewy">
             Save Book
           </h1>
-          <div className="flex justify-center p-4 w-full2">
+          <div className="flex justify-center p-4 w-full">
             <LoginForm />
           </div>
         </Mobile>

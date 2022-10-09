@@ -13,7 +13,7 @@ import {
 } from "../store/store.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Mobile, PC } from "../Responsive/responsive";
+import { Mobile, PC, SPC } from "../Responsive/responsive";
 
 const LoginForm = () => {
   const getURL = useLocation();
@@ -200,6 +200,30 @@ const LoginForm = () => {
             </form>
           </Card>
         </PC>
+        <SPC>
+          <Card styled="bg-maincolor2 p-8 flex flex-row justify-center">
+            <form className="flex flex-col" onSubmit={checkSignin}>
+              <Input
+                placeholder="아이디"
+                styled="p-3 m-3 w-long rounded-half"
+                onChange={changeID}
+              />
+              <Input
+                placeholder="비밀번호"
+                styled="p-3 m-3 w-long rounded-half"
+                onChange={changePw}
+              />
+              <a className="text-white text-xs w-long text-right hover:text-maincolor1 pt-2 underline">
+                비밀번호를 모르시겠나요?
+              </a>
+              <Button
+                styled="bg-maincolor1 inline-block text-white w-big h-middle rounded-test m-auto mt-7"
+                text="로그인"
+                type="submit"
+              ></Button>
+            </form>
+          </Card>
+        </SPC>
         <Mobile>
           <Card styled="bg-maincolor2 inline-block pt-8 pb-8">
             <form className="inline-block text-center" onSubmit={checkSignin}>

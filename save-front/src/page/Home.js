@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "../components/Button";
-import Card from "../container/Card";
 import LoginForm from "../container/LoginForm";
 import { Link } from "react-router-dom";
 import "./css/home.css";
@@ -8,7 +6,7 @@ import ModalPortal from "../Portal";
 import { modalState, modalText } from "../store/store";
 import { useRecoilState } from "recoil";
 import Modal from "../components/Modal";
-import { Mobile, PC } from "../Responsive/responsive";
+import { Mobile, PC, SPC } from "../Responsive/responsive";
 
 const Home = () => {
   const [modal, setModal] = useRecoilState(modalState);
@@ -30,6 +28,14 @@ const Home = () => {
             <LoginForm />
           </div>
         </PC>
+        <SPC>
+          <h1 className="text-white text-big text-center p-5 font-Chewy">
+            Save Book
+          </h1>
+          <div className="flex justify-center p-8 w-full2">
+            <LoginForm />
+          </div>
+        </SPC>
         <Mobile>
           <h1 className="text-white text-big2 text-center p-5 font-Chewy">
             Save Book

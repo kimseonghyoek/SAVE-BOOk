@@ -3,7 +3,7 @@ import Item from "../components/Book/Item";
 import Header from "../components/Navbar/Header";
 import BestSell from "../container/BestSell";
 import "../index.css";
-import { PC } from "../Responsive/responsive";
+import { PC, SPC } from "../Responsive/responsive";
 import bestSeller from "../assets/BestSeller.json";
 import MainContents from "../components/Contents/MainContents";
 import SubContents from "../components/Contents/SubContents";
@@ -20,7 +20,7 @@ const Main = () => {
             <div className="flex flex-col justify-center items-center">
               <div className="w-modal h-mainC border-2 border-gray p-2 rounded-test flex flex-col items-center justify-center">
                 <h1 className="text-bold p-4 font-Titillium">Hot Album</h1>
-                <ul>
+                <ul className="w-full2 flex flex-col justify-center items-center">
                   <SubContents
                     title="아이브 (IVE)"
                     sub="After Like [Single 3]"
@@ -66,6 +66,9 @@ const Main = () => {
           </BestSell>
         </div>
       </PC>
+      <SPC>
+        <h1>앵</h1>
+      </SPC>
     </>
   );
 };

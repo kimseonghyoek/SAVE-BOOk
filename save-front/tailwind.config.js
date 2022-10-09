@@ -28,7 +28,7 @@ module.exports = {
       "full" : "100vw",
       "signup":"25vw",
       "hw" : "50%",
-      "half" : "24%",
+      "half" : "25%",
       "modal" : "22vw",
       "Mprofile" : "50px",
       "itemsbtn" : "28px",
@@ -52,7 +52,8 @@ module.exports = {
       "mainC" : "80vh",
       "hw" : "70%",
       "bookImg" : "230px",
-      "subC" : "120px"
+      "subC" : "120px",
+      "half" : "25%"
     },
     borderRadius: {
       "default":"5%",

@@ -21,7 +21,7 @@ const Modal = (props) => {
     return (
       <Card
         styled={
-          "border-2 border-popup bg-danger text-white p-4 w-modal rounded-half z-5 modal m-2 " +
+          "border-2 border-popup bg-danger text-white p-4 w-modal rounded-half z-5 modal m-2 text-default" +
           ` opacity-${opacity}`
         }
       >

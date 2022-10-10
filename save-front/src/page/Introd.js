@@ -28,7 +28,7 @@ const Introd = () => {
               도서가 급하게 필요할 때 마하 배송도 가능합니다.
             </p>
             <Link to="/auth/signup">
-              <p className="fadein pt-14` underline text-bold pl-44">
+              <p className="fadein pt-14` underline text-bold pl-72">
                 당신의 어깨가 무겁다면?
               </p>
             </Link>

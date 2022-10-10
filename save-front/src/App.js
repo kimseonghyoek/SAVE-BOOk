@@ -9,7 +9,7 @@ import Item from "./components/Book/Item";
 const App = () => {
   return (
     <>
-      <div>
+      <div className="text-default">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/service" element={<Introd />} />

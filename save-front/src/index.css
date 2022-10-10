@@ -17,6 +17,14 @@ body {
   justify-content: center; */
 }
 
+html {
+  font-size: 62.5%;
+}
+
+li {
+  list-style: none;
+}
+
 #root {
   position: relative;
   top: 0;

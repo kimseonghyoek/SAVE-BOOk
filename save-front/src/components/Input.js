@@ -3,7 +3,7 @@ import React from "react";
 const Input = (props) => {
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center text-default">
       <input
         value={props.value}
         placeholder={props.placeholder}
